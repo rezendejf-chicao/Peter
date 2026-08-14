@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
 
     const { model, max_tokens, system, messages } = body;
     const wantsSonnet = typeof model === "string" && model.toLowerCase().indexOf("sonnet") >= 0;
-    const resolvedModel = wantsSonnet ? "claude-3-5-sonnet-latest" : "claude-3-5-haiku-latest";
+    const resolvedModel = wantsSonnet ? "claude-sonnet-4-5" : "claude-haiku-4-5";
 
     const r = await fetch("https://api.anthropic.com/v1/messages", {
       method: "POST",
