@@ -4,10 +4,10 @@ module.exports = async (req, res) => {
     return;
   }
 
-  const url = process.env.SUPABASE_URL;
+  const url = "https://twjmdvqkxibojoimgxrd.supabase.co";
   const key = process.env.SUPABASE_SERVICE_KEY;
-  if (!url || !key) {
-    res.status(500).json({ error: "SUPABASE_URL ou SUPABASE_SERVICE_KEY nao configuradas." });
+  if (!key) {
+    res.status(500).json({ error: "SUPABASE_SERVICE_KEY nao configurada." });
     return;
   }
 
@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
       debrief: String(body.debrief || "")
     };
 
-    const r = await fetch(url.replace(/\/$/, "") + "/rest/v1/sessions", {
+    const r = await fetch(url + "/rest/v1/sessions", {
       method: "POST",
       headers: {
         "content-type": "application/json",
